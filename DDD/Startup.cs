@@ -1,16 +1,15 @@
+using DDD.Domain.Core.Repositories;
+using DDD.Infrastructure;
+using DDD.Infrastructure.Repositories;
+using DDD.Services;
+using DDD.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DDD
 {
@@ -26,6 +25,14 @@ namespace DDD
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped(typeof(IOrderRepository<>), typeof(OrderRepository<>));
+            services.AddScoped<IOrderService, OrderService>();
+
+            services.AddDbContext<OrderDBContext>(opt =>
+                  opt.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DDD;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+                ));
+
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
