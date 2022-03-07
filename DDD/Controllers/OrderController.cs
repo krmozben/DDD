@@ -21,7 +21,6 @@ namespace DDD.Controllers
         public ActionResult GetOrder()
         {
             //test
-            //teste
             _orderService.Insert();
             return Ok();
         }
