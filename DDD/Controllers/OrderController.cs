@@ -14,9 +14,9 @@ namespace DDD.Controllers
         
         public OrderController(IOrderService orderService)
         {
-            _orderService sdfgsdfg= orderService;
+            _orderService = orderService;
         }
-
+        //asdfsadfasdf
         [HttpGet]
         public ActionResult GetOrder()
         {
