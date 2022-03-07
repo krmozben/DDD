@@ -20,6 +20,7 @@ namespace DDD.Controllers
         [HttpGet]
         public ActionResult GetOrder()
         {
+            //test
             _orderService.Insert();
             return Ok();
         }
