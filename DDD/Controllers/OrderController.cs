@@ -20,8 +20,6 @@ namespace DDD.Controllers
         [HttpGet]
         public ActionResult GetOrder()
         {
-            //test
-            //pcpcpc
             _orderService.Insert();
             return Ok();
         }
