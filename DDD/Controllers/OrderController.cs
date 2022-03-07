@@ -27,6 +27,7 @@ namespace DDD.Controllers
         [HttpGet("Getir")]
         public List<Order> Getir()
         {
+        //asdfasdf
             return _orderService.Get();
         }
     }
